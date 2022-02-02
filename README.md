@@ -5,7 +5,7 @@
 [Create React App](https://create-react-app.dev/)を利用して新しいReactアプリケーションを作成する
 
 ```
-npx create-react-app react-cpu
+npx create-react-app react-cpu --template typescript
 ```
 
 作成されたアプリケーションを起動する
