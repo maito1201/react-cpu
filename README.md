@@ -1,20 +1,19 @@
 # react-cpu
 
-## 1 Create React App
+## 2 CPUの挙動を再現する
 
-[Create React App](https://create-react-app.dev/)を利用して新しいReactアプリケーションを作成する
+`src\service\cpu.ts`を作成し、CPUの挙動を模擬した処理を記載する
 
-```
-npx create-react-app react-cpu --template typescript
-```
-
-作成されたアプリケーションを起動する
+下記のようなコードを機械語にコンパイルしたものを実行する
 
 ```
-cd react-cpu
-npm start
+let sum = 0
+for (let i = 1; i <= 10; i++) {
+ sum += i
+}
+console.log(sum)
 ```
 
-localhost:3000でアプリケーションが起動する
+`src\App.tsx`を編集し、作成したcpu.tsの実行結果をHTMLに描画する
 
 ![](./image.png)
