@@ -1,9 +1,7 @@
 # react-cpu
 
-## 3 リファクタリング
+## 4 ROMコンポーネントのデザイン
 
-`src\service\rom.ts`、`src\service\isa.ts`を作成し、ROM、命令セットアーキテクチャといった分離しやすい概念を別ファイルに記載する
-
-アプリケーションの実行結果に影響はない
+`src\component\rom.tsx`を作成し、ROMの情報を視覚的に確認できるようにする
 
 ![](./image.png)
