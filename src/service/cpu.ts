@@ -7,9 +7,9 @@ export function executeCpu(rom: number[]): number {
   let pc = 0
 
   // インストラクションレジスタ
-  let ir = 0x00
+  let ir = 0
 
-  let flag_eq = 0x00
+  let flag_eq = 0
 
   while (op_code(ir) !== OP['HLT']) {
     // 命令の内容を取得
@@ -54,16 +54,16 @@ export function executeCpu(rom: number[]): number {
         REG[op_regA(ir)] = (REG[op_regA(ir)] & 0x8000) | (REG[op_regA(ir)] >> 1)
         break
       case OP['LDL']:
-        REG[op_regA(ir)] = (REG[op_regA(ir)] & 0xff00) | (op_data(ir) & 0xff)
-        console.log(`LDL: load value low (${(REG[op_regA(ir)] & 0xff00) | (op_data(ir) & 0xff)}) to register[${op_regA(ir)}]`)
+        REG[op_regA(ir)] = (REG[op_regA(ir)] & 0xff00) | (op_data(ir) & 0x00ff)
+        console.log(`LDL: load value low (${(REG[op_regA(ir)] & 0xff00) | (op_data(ir) & 0x00ff)}) to register[${op_regA(ir)}]`)
         break
       case OP['LDH']:
-        REG[op_regA(ir)] = (op_data(ir) << 0x08) | (REG[op_regA(ir)] & 0xff)
-        console.log(`LDH: load value high (${(op_data(ir) << 0x08) | (REG[op_regA(ir)] & 0xff)}) to register[${op_regA(ir)}]`)
+        REG[op_regA(ir)] = (op_data(ir) << 8) | (REG[op_regA(ir)] & 0x00ff)
+        console.log(`LDH: load value high (${(op_data(ir) << 8) | (REG[op_regA(ir)] & 0xff)}) to register[${op_regA(ir)}]`)
         break
       case OP['CMP']:
         console.log(`CMP: compare ${REG[op_regA(ir)]} and ${REG[op_regB(ir)]}`)
-        flag_eq = (REG[op_regA(ir)] === REG[op_regB(ir)]) ? 0x01 : 0x00
+        flag_eq = (REG[op_regA(ir)] === REG[op_regB(ir)]) ? 1 : 0
         break
       case OP['JE']:
         console.log(`JE: jump to ${op_addr(ir)} if flag is true, flag = ${flag_eq === 1}`)
@@ -91,25 +91,25 @@ export function executeCpu(rom: number[]): number {
 
 // 命令のビット配列を取得する
 function op_code(ir: number): number {
-  return (ir >> 0x11)
+  return (ir >> 11)
 }
 
 // レジスタAのビット配列を取得する
 function op_regA(ir: number): number {
-  return ((ir >> 0x08) & 0x07)
+  return ((ir >> 8) & 0x0007)
 }
 
 // レジスタBのビット配列を取得する
 function op_regB(ir: number): number {
-  return ((ir >> 0x05) & 0x07)
+  return ((ir >> 5) & 0x0007)
 }
 
 // データ情報のビット配列を取得する
 function op_data(ir: number): number {
-  return (ir & 0xff)
+  return (ir & 0x00ff)
 }
 
 // アドレス情報のビット配列を取得する
 function op_addr(ir: number): number {
-  return (ir & 0xff)
+  return (ir & 0x00ff)
 }

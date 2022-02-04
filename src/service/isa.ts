@@ -1,4 +1,4 @@
-export const OPERATOR = {
+export const OPERATOR: {[key: string]: number} = {
   'MOV': 0,
   'ADD': 1,
   'SUB': 2,

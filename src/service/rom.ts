@@ -36,81 +36,81 @@ export function assembler(): number[] {
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // MOV命令のビット配列を返す
 function mov(ra: number, rb: number): number {
-  return ((OP['MOV'] << 0x11) | (ra << 0x08) | (rb << 0x05))
+  return ((OP['MOV'] << 11) | (ra << 8) | (rb << 5))
 }
 
 // ADD命令のビット配列を返す
 function add(ra: number, rb: number): number {
-  return ((OP['ADD'] << 0x11) | (ra << 0x08) | (rb << 0x05))
+  return ((OP['ADD'] << 11) | (ra << 8) | (rb << 5))
 }
 
 // SUB命令のビット配列を返す
 function sub(ra: number, rb: number): number {
-  return ((OP['SUB'] << 0x11) | (ra << 0x08) | (rb << 0x05))
+  return ((OP['SUB'] << 11) | (ra << 8) | (rb << 5))
 }
 
 // AND命令のビット配列を返す
 function and(ra: number, rb: number): number {
-  return ((OP['AND'] << 0x11) | (ra << 0x08) | (rb << 0x05))
+  return ((OP['AND'] << 11) | (ra << 8) | (rb << 5))
 }
 
 // OR命令のビット配列を返す
 function or(ra: number, rb: number): number {
-  return ((OP['OR'] << 0x11) | (ra << 0x08) | (rb << 0x05))
+  return ((OP['OR'] << 11) | (ra << 8) | (rb << 5))
 }
 
 // SL命令のビット配列を返す
 function sl(ra: number): number {
-  return ((OP['SL'] << 0x11) | (ra << 0x08))
+  return ((OP['SL'] << 11) | (ra << 8))
 }
 
 // SR命令のビット配列を返す
 function sr(ra: number): number {
-  return ((OP['SR'] << 0x11) | (ra << 0x08))
+  return ((OP['SR'] << 11) | (ra << 8))
 }
 
 // SRA命令のビット配列を返す
 function sra(ra: number): number {
-  return ((OP['SRA'] << 0x11) | (ra << 0x08))
+  return ((OP['SRA'] << 11) | (ra << 8))
 }
 
 // LDL命令のビット配列を返す
 function ldl(ra: number, ival: number): number {
-  return ((OP['LDL'] << 0x11) | (ra << 0x08) | (ival & 0xff))
+  return ((OP['LDL'] << 11) | (ra << 8) | (ival & 0x00ff))
 }
 
 // LDH命令のビット配列を返す
 function ldh(ra: number, ival: number): number {
-  return ((OP['LDH'] << 0x11) | (ra << 0x08) | (ival & 0xff))
+  return ((OP['LDH'] << 11) | (ra << 8) | (ival & 0x00ff))
 }
 
 // CMP命令のビット配列を返す
 function cmp(ra: number, rb: number): number {
-  return ((OP['CMP'] << 0x11) | (ra << 0x08) | (rb << 0x05))
+  return ((OP['CMP'] << 11) | (ra << 8) | (rb << 5))
 }
 
 // JE命令のビット配列を返す
 function je(addr: number): number {
-  return ((OP['JE'] << 0x11) | (addr & 0xff))
+  return ((OP['JE'] << 11) | (addr & 0x00ff))
 }
 
 // JMP命令のビット配列を返す
 function jmp(addr: number): number {
-  return ((OP['JMP'] << 0x11) | (addr & 0xff))
+  return ((OP['JMP'] << 11) | (addr & 0x00ff))
 }
 
 // LD命令のビット配列を返す
 function ld(ra: number, addr: number): number {
-  return ((OP['LD'] << 0x11) | (ra << 0x08) | (addr & 0xff))
+  return ((OP['LD'] << 11) | (ra << 8) | (addr & 0x00ff))
 }
 
 // ST命令のビット配列を返す
 function st(ra: number, addr: number): number {
-  return ((OP['ST'] << 0x11) | (ra << 0x08) | (addr & 0xff))
+  return ((OP['ST'] << 11) | (ra << 8) | (addr & 0x00ff))
 }
 
 // HLT命令のビット配列を返す
 function hlt(): number {
-  return (OP['HLT'] << 0x11)
+  return (OP['HLT'] << 11)
 }
 /* eslint-enable @typescript-eslint/no-unused-vars */
