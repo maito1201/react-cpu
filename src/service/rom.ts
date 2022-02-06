@@ -24,7 +24,7 @@ export function assembler(): number[] {
   rom[7] = ldl(REG3, 10)
   rom[8] = add(REG2, REG1)
   rom[9] = add(REG0, REG2)
-  rom[10] = st(REG0, 64)
+  rom[10] = st(REG0, 0)
   rom[11] = cmp(REG2, REG3)
   rom[12] = je(14)
   rom[13] = jmp(8)
