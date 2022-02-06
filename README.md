@@ -1,7 +1,7 @@
 # react-cpu
 
-## 4 ROMコンポーネントのデザイン
+## 4 Reactコンポーネントのデザイン
 
-`src\component\rom.tsx`を作成し、ROMの情報を視覚的に確認できるようにする
+`src\component`配下に各種コンポーネントを作成し、ROMの情報を視覚的に確認できるようにする
 
 ![](./image.png)
